@@ -9,19 +9,31 @@
                 <div class="panel panel-default panel-info">
 
                     <div class="panel-heading">
-                        Listado de Canales
-                        <a href="{{url('channels/create')}}" class="btn-xs btn-primary pull-right" role="button">Nuevo Canal</a>
+                        <div class="col-md-4">Listado de Canales</div>
+                        <div class="col-md-4">
+                            <div class="fb-share-button center-block" data-href="http://youparty.com.ve/" data-layout="button_count"></div>
+                        </div>
+                        <div class="col-md-4"><a href="{{url('channels/create')}}" class="btn-xs btn-primary pull-right" role="button">Nuevo Canal</a></div>
+                        <br>
                     </div>
 
                     <div class="panel-body">
-                        <p>Puedes crear un canal personal o visualizar uno existente. Recuerda entrar para agregar videos al canal seleccionado.
-                            La idea es colocar un dispositivo a visualizar un canal, mientras los usuarios pueden incluir videos desde otros.</p>
+                        <div class="alert alert-info">
+                            <p>Puedes crear un canal personal o visualizar uno existente. Recuerda entrar para agregar videos al canal seleccionado.</p>
+
+                            <ol>
+                                <li>Crear un canal nuevo canal. <a href="http://youparty.com.ve/channels/create" class="btn-xs btn-primary">Crear canal</a> </li>
+                                <li>Busca tu canal y dale click en "Visualizar canal" (puede ser tu misma laptop)</li>
+                                <li>Ojo: desde otro dipositivo (puede ser celular u otro)entras también a la página, buscas tu canal
+                                    y le das click a "Entrar"</li>
+                                <li>Agrega tu primer video a la lista de reproducción.</li>
+                            </ol>
+                        </div>
                         @foreach($channels as $channel)
                             <div class="col-md-4">
-                            Nombre: {{$channel->name}} <br>
-                            Alias: {{$channel->nick_name}}<br>
-                                <a href="channel/{{$channel->id}}">Entrar</a> -
-                                <a href="show/{{$channel->id}}">Visualizar Canal</a>
+                                <h4>{{$channel->name}} </h4> <br>
+                                <a href="channel/{{$channel->id}}" class="btn btn-success">Entrar</a> -
+                                <a href="show/{{$channel->id}}" class="btn btn-primary">Visualizar Canal</a>
                             <hr>
                             </div>
                         @endforeach

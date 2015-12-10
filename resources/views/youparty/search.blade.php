@@ -9,7 +9,7 @@
                     <div class="panel-heading">
                         {!! Form::open(['route' => 'search.create', 'method' => 'POST', 'class' => 'form-inline']) !!}
                         <div class="form-group">
-                            {!! form::label('search','Buscar')!!}
+                            {!! form::label('search','Busca  un video:')!!}
                             {!! form::text('search',null,['class' => 'form-control']) !!}
                             <input type="hidden" name="channel_id" value="{{$channel_id}}" />
                             <button type="submit" class="btn btn-default">Buscar</button>
@@ -33,7 +33,7 @@
                                                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                                                     <input type="hidden" name="url" value="{{{$video->id->videoId}}}" />
                                                     <input type="hidden" name="channel_id" value="{{$channel_id}}" />
-                                                    <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Agregar</button>
+                                                    <button type="submit" class="btn btn-success glyphicon glyphicon-ok">Agregar video al canal</button>
                                                 </div>
                                                 {!! Form::close() !!}
                                             </div>
