@@ -11,18 +11,35 @@
 |
 */
 
-Route::get('/',array('uses' => 'ChannelsController@index', 'as' => 'channels'));
-Route::get('/channels',array('uses' => 'ChannelsController@index', 'as' => 'channels'));
+Route::auth();
 
-Route::get('channel/{id}',array('uses' => 'SearchController@index', 'as' => 'channel.search'));
-Route::post('channel/search',array('uses' => 'SearchController@create', 'as' => 'search.create'));
-Route::post('channel/saveVideo',array('uses' => 'SearchController@saveVideo', 'as' => 'search.save'));
-Route::get('show/{id}', 'YoupartyController@index');
+Route::get('/', 'ChannelsController@index');
 
-Route::get('channels/create', 'ChannelsController@create');
-Route::post('channels/create', array('uses' => 'ChannelsController@store', 'as' => 'channels.store'));
+Route::resource('/channel', 'ChannelsController');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::group(['prefix' => '/channel'], function () {
+
+    //Search video by word
+    Route::get('/{id}/videos/search/{word?}', [
+        'as' => 'search.word',
+        'uses' =>  'VideosController@searchVideos'
+    ]);
+
+    //Videos list
+    Route::get('/{id}/videos/', [
+        'as' => 'search.videos',
+        'uses' =>  'VideosController@videoList'
+    ]);
+
+    //Save video  to channel
+    Route::post('/{id}/videos/save', [
+        'as' => 'save.video',
+        'uses' =>  'VideosController@saveVideo'
+    ]);
+
+    //Youparty
+    Route::get('/{id}/show/', [
+        'as' => 'youparty.show',
+        'uses' =>  'YoupartyController@index'
+    ]);
+});

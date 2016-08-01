@@ -1,33 +1,25 @@
 <?php
 
+use App\Channel;
+use App\User;
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 
-Class ChannelsTableSeeder extends Seeder{
+class ChannelsTableSeeder extends Seeder
+{
 
-    public function run() {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
 
-        $faker = Faker::create();
+        $users = User::all();
 
-        for($i = 0; $i < 5; $i ++)
-        {
-            $id =  \DB::table('channels')->insertGetId(array(
-
-                'name'          => $faker->word,
-                'nick_name'     => $faker->word,
-            ));
-
-
-
-            \DB::table('channel_videos')->insert(array(
-
-                'channel_id'   => $id,
-                'url'   => 'http://www.youtube.com/'.$faker->userName,
-                'viewed' => 0
-
-            ));
-
-        }
+        factory(Channel::class)->times(10)->make()->each(function ($channel) use ($users) {
+            $channel->user_id = $users->random()->id;
+            $channel->save();
+        });
     }
 }
-?>

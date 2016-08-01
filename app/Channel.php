@@ -1,14 +1,24 @@
-<?php namespace you;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
-class Channel extends Model {
+class Channel extends Model
+{
 
-    protected $table = 'channels';
-    protected $fillable = ['name','nick_name'];
+    protected $fillable = [ 'name' ];
 
-    public function videos(){
-        return $this->hasMany('you/ChannelVideos');
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'channel_id');
+
     }
 
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
 }

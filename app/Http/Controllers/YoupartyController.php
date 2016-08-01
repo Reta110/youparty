@@ -1,28 +1,28 @@
-<?php namespace you\Http\Controllers;
+<?php
 
-use you\ChannelVideos;
-use you\Http\Requests;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use Madcoda\Youtube;
+use App\Video;
 
 class YoupartyController extends Controller
 {
-
-    /**
-     * Muestra los videos del canal seleccionado
-     * @param $id
-     * @return \Illuminate\View\View
-     */
     public function index($id)
     {
-        $youtube = new \Madcoda\Youtube(array('key' => 'AIzaSyC4DkOm379a_5p77mjjLlEsBubtPXYO584'));
-        $video = ChannelVideos::where('channel_id', '=', $id)
-                    ->Where('viewed', '=', 0)
-                    ->first();
+        $youtube = new Youtube(config('youtube'));
+
+        $video = Video::where('channel_id', $id)
+            ->Where('viewed', '=', 0)
+            ->first();
 
         if ($video != null) {
-            $info = $youtube->getVideoInfo($video->url);
-
+            $info = $youtube->getVideoInfo($video->videoId);
             $time = $this->timeCalculate($info->contentDetails->duration);
-            $this->viewedUpdate($video->id);
+
+            //$this->viewedUpdate($video->id);
         }
 
         return view("youparty.show", compact('video', 'time'));
@@ -34,7 +34,7 @@ class YoupartyController extends Controller
      */
     public function viewedUpdate($id)
     {
-        $video = ChannelVideos::findOrFail($id);
+        $video = Video::findOrFail($id);
         $video->viewed = 1;
         $video->update();
     }
