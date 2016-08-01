@@ -1,2 +1,7 @@
-# youparty
-Puedes crear un canal personal o visualizar uno existente. Recuerda entrar para agregar videos de youtube al canal seleccionado. La idea es colocar un dispositivo a visualizar un canal, mientras los usuarios pueden incluir videos desde otros.
+# Youparty
+
+You can create a channel a add videos from other devices.
+
+You can try it here: https://www.youparty.com.ve
+
+Bugs and Forks are welcomed.
