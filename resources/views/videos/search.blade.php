@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        @include('partials.sucess')
+                        @include('partials.success')
 
                         <h3>Canal: {{ $channel->name }}</h3>
 
@@ -25,7 +25,7 @@
                     <div class="panel-body">
 
                         <div class="row">
-                            @include('videos.partials.videos')
+                            @include('videos.partials.videosListSearch')
                         </div>
                     </div>
                 </div>

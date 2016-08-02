@@ -54,7 +54,7 @@ class VideosController extends Controller
         $video->channel_id = $id;
         $video->save();
 
-        redirect()->route('search.videos', $id);
+        return redirect("channel/$id")->with('success', 'Tu video ha sido agregado correctamente');
     }
 
 
