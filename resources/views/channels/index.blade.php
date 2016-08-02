@@ -33,7 +33,7 @@
                             <div class="col-md-4">
                                 <h4>{{$channel->name}} </h4> <br>
                                 <a href="channel/{{$channel->id}}" class="btn btn-success">Entrar</a> -
-                                <a href="show/{{$channel->id}}" class="btn btn-primary">Visualizar Canal</a>
+                                <a href="{{route('youparty.show', ['id' => $channel->id])}}" class="btn btn-primary">Visualizar Canal</a>
                             <hr>
                             </div>
                         @endforeach
