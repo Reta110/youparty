@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -24,6 +16,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+
+        $channels = Channel::Where('user_id', $user->id)->get();
+
+        return view('admin.admin', compact('channels'));
     }
 }

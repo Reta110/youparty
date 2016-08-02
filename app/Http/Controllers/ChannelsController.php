@@ -12,7 +12,7 @@ class ChannelsController extends Controller
 
     protected $youtube_key = 'AIzaSyC4DkOm379a_5p77mjjLlEsBubtPXYO584';
     /**
-     * Display a listing of the resource.
+     * Display a listing.
      *
      * @return \Illuminate\Http\Response
      */
@@ -51,7 +51,7 @@ class ChannelsController extends Controller
         $channel->user_id = $user->id;
         $channel->save();
 
-        return redirect('/channel');
+        return redirect()->route('admin.index');
     }
 
 

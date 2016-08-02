@@ -21,5 +21,6 @@ class ChannelsTableSeeder extends Seeder
             $channel->user_id = $users->random()->id;
             $channel->save();
         });
+
     }
 }

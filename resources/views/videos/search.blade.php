@@ -12,12 +12,14 @@
                         <h3>Canal: {{ $channel->name }}</h3>
 
 
-                        {!! Form::open(['route' => ['search.word',$channel], 'method' => 'GET', 'class' => 'form-inline']) !!}
+                        {!! Form::open(['route' => ['search.word',$channel], 'method' => 'GET', 'class' => 'form form-inline']) !!}
                         <div class="form-group">
-                            {!! form::label('word','Busca  un video:')!!}
-                            <input type="text" name="word" value="{{ old('word')}}" class='form-control'">
+
+                            <input type="text" name="word" value="{{ old('word')}}" class='form-control'>
 
                             <button type="submit" class="btn btn-default">Buscar</button>
+
+                            <p class="text-info">Busca un video para que puedas agregarlo a la lista del canal</p>
                         </div>
                         {!! Form::close() !!}
 
