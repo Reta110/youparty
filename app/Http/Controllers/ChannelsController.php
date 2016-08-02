@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Madcoda\Youtube;
 
 class ChannelsController extends Controller
@@ -43,7 +44,12 @@ class ChannelsController extends Controller
      */
     public function store(Request $request)
     {
-        Channel::create($request->all());
+        $user = $request->user();
+        $channel = new Channel();
+
+        $channel->name = $request->name;
+        $channel->user_id = $user->id;
+        $channel->save();
 
         return redirect('/channel');
     }
