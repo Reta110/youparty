@@ -19,10 +19,10 @@ class VideosController extends Controller
      */
     public function searchVideos(Request $request, $id)
     {
-        $word    = $request->word;
+        $word = $request->word;
         $channel = Channel::findOrfail($id);
 
-        $params  = $this->params();
+        $params  = $this->params($word);
         $youtube = new Youtube(config('youtube'));
 
         $videos = $youtube->searchAdvanced($params, true);
@@ -68,7 +68,7 @@ class VideosController extends Controller
     /**
      * @return array
      */
-    public function params()
+    public function params($word)
     {
         return [
             'q'          => $word,

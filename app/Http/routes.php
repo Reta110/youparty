@@ -17,12 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/channel', 'ChannelsController');
+//Channels
+Route::get('/channels', [ 'uses' => 'ChannelsController@index'])->name('channels');
 
 Route::group([ 'prefix' => '/channel' ], function () {
 
+    //Show
+    Route::get('/{id}', [ 'uses' => 'ChannelsController@show' ])->name('channel.show');
+
     //Search video by word
-    Route::get('/{id}/videos/search/{word?}', [
+    Route::get('/{id}/search-videos/{word?}', [
         'as'   => 'search.word',
         'uses' => 'VideosController@searchVideos'
     ]);
@@ -58,4 +62,6 @@ Route::group([ 'prefix' => 'admin', 'middleware' => 'auth' ], function () {
         'uses' => 'ChannelsController@create'
     ]);
 
+    //Store
+    Route::post('/channel/create', [ 'as' => 'channel.store', 'uses' => 'ChannelsController@store' ]);
 });

@@ -17,9 +17,8 @@
 
                             <input type="text" name="word" value="{{ old('word')}}" class='form-control'>
 
-                            <button type="submit" class="btn btn-default">Buscar</button>
+                            <button type="submit" class="btn btn-default">Buscar video</button>
 
-                            <p class="text-info">Busca un video para que puedas agregarlo a la lista del canal</p>
                         </div>
                         {!! Form::close() !!}
 
@@ -27,8 +26,9 @@
                     <div class="panel-body">
 
                         <div class="row">
-                            @include('videos.partials.videosListSearch')
+                            @include('videos.partials.videoList')
                         </div>
+                        
                     </div>
                 </div>
             </div>

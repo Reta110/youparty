@@ -8,18 +8,17 @@
                 <img src="{{url('images/youparty.jpg')}}" class="img-responsive">
 
                     <div class="alert alert-info">
-                        <p>Puedes crear un canal personal o visualizar uno existente. Recuerda entrar para agregar
-                            videos al canal seleccionado.</p>
-
+                        <h4>Para invitados</h4>
                         <ol>
-                            <li>Crear un canal nuevo canal. <a href="http://youparty.com.ve/channel/create"
-                                                               class="btn-xs btn-primary">Crear canal</a></li>
-                            <li>Busca tu canal y dale click en "Visualizar canal" (puede ser tu misma laptop)</li>
-                            <li>Ojo: desde otro dipositivo (puede ser celular u otro)entras también a la página, buscas
-                                tu canal
-                                y le das click a "Entrar"
-                            </li>
-                            <li>Agrega tu primer video a la lista de reproducción.</li>
+                            <li>Busca el canal y entra para comenzar a agregar videos</li>
+                        </ol>
+
+                        <h4>Para crear tu propio canal</h4>
+                        <ol>
+                            <li>Debes <a href="{{url('/register')}}">registrarte</a></li>
+                            <li>Crear el canal</li>
+                            <li>Visualiza tu canal en una pantalla donde todos vean</li>
+                            <li>Indica a tus amigos el nombre de tu canal para que puedan agregar los videos</li>
                         </ol>
                     </div>
             </div>

@@ -30,14 +30,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        $gate->before(function () {
-
-            return auth()->user()->isAdmin();
-        });
-
         $gate->define('youparty', function (Channel $channel) {
 
             return $channel->user_id == $user->id;
+        });
+
+        $gate->define('admin', function (Channel $channel) {
+
+            return auth()->user()->isAdmin();
         });
     }
 }

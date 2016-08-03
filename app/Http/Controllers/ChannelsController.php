@@ -41,8 +41,8 @@ class ChannelsController extends Controller
      */
     public function store(Request $request)
     {
-        $user    = $request->user();
-        $channel = new Channel($request, $user);
+        $user    = auth()->user();
+        $channel = new Channel();
 
         $channel->name    = $request->name;
         $channel->user_id = $user->id;
@@ -62,8 +62,8 @@ class ChannelsController extends Controller
     public function show($id)
     {
         $channel = Channel::findOrfail($id);
+        $videos  = Channel::find($id)->videos()->where('viewed', 0)->get();
 
-        return view('videos.search', compact('channel'));
+        return view('videos.search', compact([ 'channel', 'videos' ]));
     }
-
 }
