@@ -11,7 +11,8 @@
                     <div class="panel-heading">
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
-                            <div class="fb-share-button center-block" data-href="http://youparty.com.ve/" data-layout="button_count"></div>
+                            <div class="fb-share-button center-block" data-href="http://youparty.com.ve/"
+                                 data-layout="button_count"></div>
                         </div>
                         <div class="col-md-4">
 
@@ -25,10 +26,15 @@
                         @foreach($channels as $channel)
                             <div class="col-md-4">
                                 <h4>{{$channel->name}} </h4> <br>
-                                <a href="channel/{{$channel->id}}" class="btn btn-success text-center">Entrar al canal</a>
-                            <hr>
+                                <a href="channel/{{$channel->id}}" class="btn btn-success text-center">Entrar al
+                                    canal</a>
+                                <hr>
                             </div>
                         @endforeach
+
+                        <div class="col-md-12">
+                            {{ $channels->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

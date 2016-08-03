@@ -9,20 +9,21 @@ use Madcoda\Youtube;
 class YoupartyController extends Controller
 {
 
+    /**
+     * Show youparty -  all the videos of the channel
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index($id)
     {
-        //Refactorizar este codigo con las politicas de seguridad
-        $user    = auth()->user();
         $channel = Channel::findOrFail($id);
 
-        if ($channel->user_id != $user->id) {
-            abort(403, 'Unauthorized action.');
-        }
-        //
+        $this->authorize('youparty', [ $channel ]);
 
         $youtube = new Youtube(config('youtube'));
 
-        $video = Video::where('channel_id', $id)->Where('viewed', '=', 0)->first();
+        $video = Video::where('channel_id', $id)->Where('viewed', 0)->first();
 
         if ($video != null) {
             $info = $youtube->getVideoInfo($video->videoId);
@@ -36,7 +37,7 @@ class YoupartyController extends Controller
 
 
     /**
-     * Marcar que ha sido visto el video
+     * Update - video Now is viewed
      *
      * @param $id
      */
@@ -49,7 +50,7 @@ class YoupartyController extends Controller
 
 
     /**
-     * Calcula el tiempo - formato youtube -> milisegundos
+     * Time calculate -  youtube format-> milisegundos
      *
      * @param $time
      *

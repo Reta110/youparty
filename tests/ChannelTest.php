@@ -25,17 +25,12 @@ class ChannelTest extends TestCase
         $user = \App\User::create([
             'name' => 'Rafael',
             'email' => 'admin@admin.com',
-            'role' => 'user',
+            'role' => 'admin',
             'password' => bcrypt('admin'),
             'remember_token' => str_random(10),
         ]);
 
         $this->actingAs($user)
-            ->visit('/channel')
-            ->click('Nuevo Canal')
-            ->seePageIs('channel/create')
-            ->type('Nuevo Canal de Rafa','name')
-            ->press('Crear canal')
-            ->see('Nuevo Canal de Rafa');
+            ->visit('/channel/create');
     }
 }

@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Madcoda\Youtube;
 
 class ChannelsController extends Controller
 {
 
-    protected $youtube_key = 'AIzaSyC4DkOm379a_5p77mjjLlEsBubtPXYO584';
     /**
      * Display a listing.
      *
@@ -18,7 +15,7 @@ class ChannelsController extends Controller
      */
     public function index()
     {
-        $channels = Channel::all();
+        $channels = Channel::paginate();
 
         return view('channels.index', compact('channels'));
     }
@@ -44,10 +41,10 @@ class ChannelsController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $request->user();
-        $channel = new Channel();
+        $user    = $request->user();
+        $channel = new Channel($request, $user);
 
-        $channel->name = $request->name;
+        $channel->name    = $request->name;
         $channel->user_id = $user->id;
         $channel->save();
 
@@ -67,33 +64,6 @@ class ChannelsController extends Controller
         $channel = Channel::findOrfail($id);
 
         return view('videos.search', compact('channel'));
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
 }

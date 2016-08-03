@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Channel;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
+
     /**
      * The policy mappings for the application.
      *
@@ -16,16 +18,26 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
+
     /**
      * Register any application authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
+     * @param  \Illuminate\Contracts\Auth\Access\Gate $gate
+     *
      * @return void
      */
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
 
-        //
+        $gate->before(function () {
+
+            return auth()->user()->isAdmin();
+        });
+
+        $gate->define('youparty', function (Channel $channel) {
+
+            return $channel->user_id == $user->id;
+        });
     }
 }

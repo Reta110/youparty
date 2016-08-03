@@ -22,29 +22,22 @@ class VideosController extends Controller
         $word    = $request->word;
         $channel = Channel::findOrfail($id);
 
-        $params = [
-            'q'          => $word,
-            'type'       => 'video',
-            'part'       => 'id, snippet',
-            'maxResults' => 20,
-        ];
-
+        $params  = $this->params();
         $youtube = new Youtube(config('youtube'));
 
-        // Make a call
         $videos = $youtube->searchAdvanced($params, true);
-
-        // check if we have a pageToken
-        if (isset( $search['info']['nextPageToken'] )) {
-            $params['pageToken'] = $search['info']['nextPageToken'];
-        }
-
         $videos = $videos['results'];
 
         return view('videos.list', compact('videos', 'channel'));
     }
 
 
+    /**
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function saveVideo(Request $request, $id)
     {
         $video             = new Video();
@@ -58,11 +51,30 @@ class VideosController extends Controller
     }
 
 
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function videoList($id)
     {
         $channel = Channel::findOrFail($id);
         $videos  = Video::where('channel_id', $id)->where('viewed', 'false')->get();
 
         return view('videos.list', compact('videos', 'channel'));
+    }
+
+
+    /**
+     * @return array
+     */
+    public function params()
+    {
+        return [
+            'q'          => $word,
+            'type'       => 'video',
+            'part'       => 'id, snippet',
+            'maxResults' => 20,
+        ];
     }
 }
