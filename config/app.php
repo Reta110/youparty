@@ -158,6 +158,7 @@ return [
 
         Madcoda\Youtube\YoutubeServiceProviderLaravel5::class,
         Collective\Html\HtmlServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -208,6 +209,7 @@ return [
         'Youtube'   => Madcoda\Youtube\Facades\Youtube::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

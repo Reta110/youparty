@@ -13,6 +13,9 @@
 
 Route::auth();
 
+Route::get('/redirect', 'SocialAuthController@redirect');
+Route::get('/callback', 'SocialAuthController@callback');
+
 Route::get('/', function () {
     return view('welcome');
 });
