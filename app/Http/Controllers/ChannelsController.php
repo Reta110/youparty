@@ -52,7 +52,7 @@ class ChannelsController extends Controller
             $request->file('image')->getClientOriginalExtension();
 
         $request->file('image')->move(
-            storage_path() . '/images/channels/', $imageName
+            public_path() . '/images/channels/', $imageName
         );
 //        todo mensaje de exito
 
