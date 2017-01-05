@@ -83,6 +83,12 @@
 
 @yield('content')
 
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted text-center">Desarrollado por <a href="http://www.rafaeltorrealba.com.ve" target="_blank"> @Reta110</a></p>
+    </div>
+</footer>
+
 <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
         integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"

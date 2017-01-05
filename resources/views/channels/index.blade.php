@@ -4,30 +4,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <h1>Listado de Canales</h1>
+                <h1>Elige un canal</h1>
 
                 <div class="panel panel-default panel-info">
 
                     <div class="panel-heading">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="fb-share-button center-block" data-href="http://youparty.com.ve/"
-                                 data-layout="button_count"></div>
-                        </div>
-                        <div class="col-md-4">
 
-                        </div>
+                        <div class="fb-share-button center-block" data-href="http://youparty.com.ve/"
+                             data-layout="button_count"></div>
+
                     </div>
 
                     <div class="panel-body">
-                        <div class="alert alert-warning">
-                            <p>Para poder crear tu propio canal, debes de estar registrado.</p>
-                        </div>
+                        @if (Auth::guest())
+                            <div class="alert alert-warning">
+                                <p>Inicia sesion para poder entrar a un canal.</p>
+                            </div>
+                        @endif
                         @foreach($channels as $channel)
-                            <div class="col-md-6">
-                                <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive">
-                                <h4>{{$channel->name}} </h4> <br>
-                                <a href="channel/{{$channel->id}}" class="btn btn-success text-center">Entrar</a>
+                            <div class="col-md-6 table-bordered">
+                                <a href="channel/{{$channel->id}}" >
+                                    <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive center-block">
+                                </a>
+                                <a href="channel/{{$channel->id}}"><h4 class="text-center">{{$channel->name}} </h4></a>
                                 <hr>
                             </div>
                         @endforeach

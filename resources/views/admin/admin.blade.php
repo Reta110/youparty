@@ -39,6 +39,16 @@
                                     </tr>
                                 @endforeach
                             </table>
+                        @else
+                            <div class="alert alert-info">
+
+                                <h4>Para crear tu propio canal</h4>
+                                <ol>
+
+                                    <li>Visualiza tu canal en una pantalla donde todos vean</li>
+                                    <li>Indica a tus amigos el nombre de tu canal para que puedan agregar los videos</li>
+                                </ol>
+                            </div>
                         @endif
 
                     </div>

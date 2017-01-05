@@ -23,6 +23,6 @@ class SocialAuthController extends Controller
 
         auth()->login($user);
 
-        return redirect()->to('/');
+        return redirect()->to('/channels');
     }
 }
