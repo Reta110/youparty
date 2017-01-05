@@ -11,10 +11,11 @@
 
                         @include('partials.errorFields')
 
-                        {!! Form::open(['route' => 'channel.store', 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'channel.store', 'method' => 'POST','files' => 'true', 'class' => 'form'] ) !!}
                         @include('channels.partials.fields')
                         <button type="submit" class="btn btn-default">Crear canal</button>
                         {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>

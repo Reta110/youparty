@@ -41,12 +41,20 @@ class ChannelsController extends Controller
      */
     public function store(Request $request)
     {
-        $user    = auth()->user();
+        $user = auth()->user();
         $channel = new Channel();
 
-        $channel->name    = $request->name;
+        $channel->name = $request->name;
         $channel->user_id = $user->id;
         $channel->save();
+
+        $imageName = $channel->id . '.' .
+            $request->file('image')->getClientOriginalExtension();
+
+        $request->file('image')->move(
+            storage_path() . '/images/channels/', $imageName
+        );
+//        todo mensaje de exito
 
         return redirect()->route('admin.index');
     }
@@ -62,8 +70,8 @@ class ChannelsController extends Controller
     public function show($id)
     {
         $channel = Channel::findOrfail($id);
-        $videos  = Channel::find($id)->videos()->where('viewed', 0)->get();
+        $videos = Channel::find($id)->videos()->where('viewed', 0)->get();
 
-        return view('videos.search', compact([ 'channel', 'videos' ]));
+        return view('videos.search', compact(['channel', 'videos']));
     }
 }

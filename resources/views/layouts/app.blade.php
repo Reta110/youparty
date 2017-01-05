@@ -48,12 +48,7 @@
             <a class="navbar-brand" href="{{ route('channels') }}">
                 Canales
             </a>
-            @if (!Auth::guest())
-                <p class="navbar-text"> - </p>
-                <a class="navbar-brand" href="{{ url('/admin') }}">
-                    Admin
-                </a>
-            @endif
+
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -76,6 +71,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/admin') }}"><i class="fa fa-btn fa fa-cogs"></i>Admin</a></li>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
