@@ -5,6 +5,6 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('Seleccione una imagen para el canal') !!}
-    {!! Form::file('image', null,['class' => 'form-control']) !!}
+    {!! Form::label('Imagen') !!}
+    {!! Form::file('image', ['class' => 'form-control']) !!}
 </div>

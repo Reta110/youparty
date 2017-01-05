@@ -24,10 +24,10 @@
                             <p>Para poder crear tu propio canal, debes de estar registrado.</p>
                         </div>
                         @foreach($channels as $channel)
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive">
                                 <h4>{{$channel->name}} </h4> <br>
-                                <a href="channel/{{$channel->id}}" class="btn btn-success text-center">Entrar al
-                                    canal</a>
+                                <a href="channel/{{$channel->id}}" class="btn btn-success text-center">Entrar</a>
                                 <hr>
                             </div>
                         @endforeach

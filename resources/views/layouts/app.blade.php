@@ -43,7 +43,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/ ') }}">
-                Home
+                Youparty
             </a>
             <a class="navbar-brand" href="{{ route('channels') }}">
                 Canales

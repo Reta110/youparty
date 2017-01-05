@@ -13,9 +13,13 @@
 
                         @include('partials.errorFields')
 
-                        @include('channels.create')
+                        {!! Form::open(['route' => 'channel.store', 'method' => 'POST','files' => 'true', 'class' => 'form-inline'] ) !!}
+                        @include('channels.partials.fields')
+                        <button type="submit" class="btn btn-success">Crear canal</button>
+                        {!! Form::close() !!}
 
                         @if(count($channels) >0)
+
                             <h3>Tus canales:</h3>
                             <table class="table table-responsive">
                                 <tr>
