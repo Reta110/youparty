@@ -16,7 +16,6 @@ class ChannelsController extends Controller
     public function index()
     {
         $channels = Channel::paginate();
-
         return view('channels.index', compact('channels'));
     }
 

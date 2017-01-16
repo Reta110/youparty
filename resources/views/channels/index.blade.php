@@ -23,8 +23,9 @@
                         @endif
                         @foreach($channels as $channel)
                             <div class="col-md-6 table-bordered">
-                                <a href="channel/{{$channel->id}}" >
-                                    <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive center-block">
+                                <a href="channel/{{$channel->id}}">
+                                    <img src="{{url('images/channels/'.$channel->id.'.jpg')}}"
+                                         class="img-responsive center-block">
                                 </a>
                                 <a href="channel/{{$channel->id}}"><h4 class="text-center">{{$channel->name}} </h4></a>
                                 <hr>

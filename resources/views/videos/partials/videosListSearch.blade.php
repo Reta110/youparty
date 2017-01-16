@@ -1,7 +1,7 @@
 @if(isset($videos))
     @foreach($videos as $video)
         <div class="col-md-6 table-bordered">
-                <img src="{{$video->snippet->thumbnails->medium->url}}" class="center-block">
+                <img src="{{$video->snippet->thumbnails->medium->url}}" class="center-block image-responsive">
                 <div class="caption">
                     <h3 class="text-center">{{$video->snippet->title}}</h3>
 

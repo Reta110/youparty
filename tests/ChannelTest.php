@@ -15,7 +15,8 @@ class ChannelTest extends TestCase
     public function testSeeList()
     {
         $this->visit('/channel')
-            ->see('Listado de Canales');
+            ->see('Listado de Canales')
+            ->press
     }
 
 
