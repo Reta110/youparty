@@ -45,6 +45,7 @@ class VideosController extends Controller
         $video->videoId    = $request->videoId;
         $video->thumbnail  = $request->thumbnail;
         $video->channel_id = $id;
+        $video->user_id = auth()->user()->id;
         $video->save();
 
         return redirect("channel/$id")->with('success', 'Tu video ha sido agregado correctamente');

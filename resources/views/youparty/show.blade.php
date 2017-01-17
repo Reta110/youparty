@@ -8,4 +8,6 @@
         </iframe>
     </div>
 
+    <div class="pull-right " style="position:absolute;bottom:5px;right:5px;margin:0;padding:5px 3px;">{{$video->user->name  }}<img src="{{$video->user->avatar}}"></div>
+
 @endsection

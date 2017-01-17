@@ -16,6 +16,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -37,12 +38,16 @@ class User extends Authenticatable
         return $this->hasMany(Channel::class);
     }
 
-
     /**
      * @return bool
      */
     public function isAdmin()
     {
         return $this->role == 'admin';
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
     }
 }

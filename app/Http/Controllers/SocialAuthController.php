@@ -21,7 +21,6 @@ class SocialAuthController extends Controller
         echo 'aaa';
         $user = Socialite::driver('facebook')->stateless()->user();
         dd($user);
-
     }
 
     public function callback(SocialAccountService $service)
