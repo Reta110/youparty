@@ -70,7 +70,7 @@ class YoupartyController extends Controller
             $time = ($time[0] * 1000);
         }
 
-        return $time;
+        return $time + 3000;
     }
 
     /**
@@ -82,13 +82,16 @@ class YoupartyController extends Controller
         //First viewed video
         $videoViewed = Video::where('channel_id', $id)->Where('viewed', 1)->orderBy('id', 'DES')->first();
 
+        // Get the first without repeat the user_id of the last viewed
         if ($videoViewed != null) {
             $video = Video::where('channel_id', $id)->Where('viewed', 0)->Where('user_id', '<>', $videoViewed->user_id)->first();
         }
-        if ($videoViewed != null) {
+
+        //Else get the the next one.
+        if ($video == null) {
             $video = Video::where('channel_id', $id)->Where('viewed', 0)->first();
-            return $video;
         }
+
         return $video;
     }
 }
