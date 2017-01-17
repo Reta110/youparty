@@ -23,7 +23,7 @@ class YoupartyController extends Controller
 
         $youtube = new Youtube(config('youtube'));
 
-        $video = Video::where('channel_id', $id)->Where('viewed', 0)->first();
+        $video = $this->getFirstNoRepeatedVideo($id);
 
         if ($video != null) {
             $info = $youtube->getVideoInfo($video->videoId);
@@ -71,5 +71,24 @@ class YoupartyController extends Controller
         }
 
         return $time;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    private function getFirstNoRepeatedVideo($id)
+    {
+        //First viewed video
+        $videoViewed = Video::where('channel_id', $id)->Where('viewed', 1)->orderBy('id', 'DES')->first();
+
+        if ($videoViewed != null) {
+            $video = Video::where('channel_id', $id)->Where('viewed', 0)->Where('user_id', '<>', $videoViewed->user_id)->first();
+        }
+        if ($videoViewed != null) {
+            $video = Video::where('channel_id', $id)->Where('viewed', 0)->first();
+            return $video;
+        }
+        return $video;
     }
 }

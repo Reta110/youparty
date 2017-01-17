@@ -9,6 +9,17 @@
                         <img src="{{$video->thumbnail}}" class="center-block image-responsive">
                         <div class="caption">
                             <h3 class="text-center">{{$video->title}}</h3>
+{{--
+                            {!! Form::open(['route' => ['save.video',$channel], 'method' => 'POST', 'class' => 'form-inline']) !!}
+
+                            <p class="text-center">
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-check-circle-o"
+                                                                                        aria-hidden="true"></i> Eliminar de la lista
+                                </button>
+                            </p>
+
+                            {!! Form::close() !!}
+                            --}}
                         </div>
                     </div>
             </div>
