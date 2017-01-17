@@ -31,7 +31,6 @@ class VideosController extends Controller
         return view('videos.list', compact('videos', 'channel'));
     }
 
-
     /**
      * @param Request $request
      * @param         $id

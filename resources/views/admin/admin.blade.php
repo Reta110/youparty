@@ -9,13 +9,28 @@
 
                     <div class="panel-body">
 
+                        @include('partials.errorFields')
+                        @include('partials.success')
+
                         <h3>Crear canal:</h3>
 
-                        @include('partials.errorFields')
+                        @if(count($channels) <0)
+                            <br>
+                            <div class="alert alert-info">
+                                <ul>
+                                    <li>Luego de crearlo, coloca a visualizar tu canal en una pantalla donde todos
+                                        vean.
+                                    </li>
+                                    <li>Indica a tus amigos el nombre de tu canal para que puedan agregar los videos.
+                                    </li>
+                                </ul>
+                            </div>
+                        @endif
 
-                        {!! Form::open(['route' => 'channel.store', 'method' => 'POST','files' => 'true', 'class' => 'form-inline'] ) !!}
+
+                        {!! Form::open(['route' => 'channel.store', 'method' => 'POST','files' => 'true', 'class' => 'form'] ) !!}
                         @include('channels.partials.fields')
-                        <button type="submit" class="btn btn-success">Crear canal</button>
+                        <button type="submit" class="btn btn-success center-block">Crear canal</button>
                         {!! Form::close() !!}
 
                         @if(count($channels) >0)
@@ -26,6 +41,7 @@
                                     <th>Nombre</th>
                                     <th>Entrar</th>
                                     <th>Visualizar</th>
+                                    <th>Acciones</th>
                                 </tr>
                                 @foreach($channels as $channel)
                                     <tr>
@@ -36,19 +52,14 @@
                                         <td><a href="{{route("youparty.show", $channel)}}"
                                                class="btn btn-primary">Colocar a visualizar Canal</a>
                                         </td>
+                                        <td>
+                                            {!! Form::open(['route' => ['channel.delete', $channel], 'method' => 'POST','class' => 'form-inline'] ) !!}
+                                            <button type="submit" class="btn btn-danger">Elimiar canal</button>
+                                            {!! Form::close() !!}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </table>
-                        @else
-                            <div class="alert alert-info">
-
-                                <h4>Para crear tu propio canal</h4>
-                                <ol>
-
-                                    <li>Visualiza tu canal en una pantalla donde todos vean</li>
-                                    <li>Indica a tus amigos el nombre de tu canal para que puedan agregar los videos</li>
-                                </ol>
-                            </div>
                         @endif
 
                     </div>

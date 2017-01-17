@@ -59,9 +59,8 @@ class ChannelsController extends Controller
         $request->file('image')->move(
             public_path() . '/images/channels/', $imageName
         );
-//        todo mensaje de exito
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success', 'El canal ha sido creado correctamente.');;
     }
 
 
@@ -78,5 +77,19 @@ class ChannelsController extends Controller
         $videos = Channel::find($id)->videos()->where('viewed', 0)->get();
 
         return view('videos.search', compact(['channel', 'videos']));
+    }
+
+    public function destroy($id)
+    {
+
+        $channel = Channel::findOrfail($id);
+
+        if ($channel->user_id != auth()->user()->id){
+            return error('400');
+        }
+
+        Channel::destroy($id);
+
+        return redirect()->route('admin.index')->with('success', 'El canal ha sido eliminado.');
     }
 }

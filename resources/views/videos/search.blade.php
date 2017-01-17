@@ -29,9 +29,7 @@
                     </div>
                     <div class="panel-body">
 
-                        <div class="row">
                             @include('videos.partials.videoList')
-                        </div>
 
                     </div>
                 </div>
