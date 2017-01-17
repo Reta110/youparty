@@ -19,7 +19,7 @@ class YoupartyController extends Controller
     {
         $channel = Channel::findOrFail($id);
 
-        $this->authorize('youparty', [ $channel ]);
+        $this->authorize('youparty', [$channel]);
 
         $youtube = new Youtube(config('youtube'));
 
@@ -43,7 +43,7 @@ class YoupartyController extends Controller
      */
     public function viewedUpdate($id)
     {
-        $video         = Video::findOrFail($id);
+        $video = Video::findOrFail($id);
         $video->viewed = 1;
         $video->update();
     }
@@ -63,11 +63,11 @@ class YoupartyController extends Controller
             $time = trim($time, 'PT');
             $time = trim($time, 'S');
             $time = explode('M', $time);
-            $time = ( ( ( $time[0] * 60 ) + ( $time[1] ) ) * 1000 );
+            $time = ((($time[0] * 60) + ($time[1])) * 1000);
         } else {
             $time = trim($time, 'PT');
             $time = explode('S', $time);
-            $time = ( $time[0] * 1000 );
+            $time = ($time[0] * 1000);
         }
 
         return $time;
