@@ -41,6 +41,12 @@ class ChannelsController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
+
+        $this->validate($request,[
+            'name' => 'required',
+            'image' => 'required|image'
+        ]);
+
         $channel = new Channel();
 
         $channel->name = $request->name;
