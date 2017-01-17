@@ -11,7 +11,7 @@ class VideosController extends Controller
 {
 
     /**
-     * Remove the specified resource from storage.
+     * Search videos.
      *
      * @param  int $id
      *

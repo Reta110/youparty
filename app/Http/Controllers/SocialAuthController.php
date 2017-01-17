@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\SocialAccountService;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialAuthController extends Controller
 {
@@ -16,9 +16,18 @@ class SocialAuthController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
 
+    public function aaaa()
+    {
+        echo 'aaa';
+        $user = Socialite::driver('facebook')->stateless()->user();
+        dd($user);
+
+    }
+
     public function callback(SocialAccountService $service)
     {
-        $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
+        $user = Socialite::driver('facebook')->stateless()->user();
+        $user = $service->createOrGetUser($user);
         auth()->login($user);
 
         return redirect()->to('/channels');
