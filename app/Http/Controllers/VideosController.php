@@ -22,7 +22,7 @@ class VideosController extends Controller
         $word = $request->word;
         $channel = Channel::findOrfail($id);
 
-        $params  = $this->params($word);
+        $params = $this->params($word);
         $youtube = new Youtube(config('youtube'));
 
         $videos = $youtube->searchAdvanced($params, true);
@@ -40,10 +40,10 @@ class VideosController extends Controller
      */
     public function saveVideo(Request $request, $id)
     {
-        $video             = new Video();
-        $video->title      = $request->title;
-        $video->videoId    = $request->videoId;
-        $video->thumbnail  = $request->thumbnail;
+        $video = new Video();
+        $video->title = $request->title;
+        $video->videoId = $request->videoId;
+        $video->thumbnail = $request->thumbnail;
         $video->channel_id = $id;
         $video->user_id = auth()->user()->id;
         $video->save();
@@ -60,7 +60,7 @@ class VideosController extends Controller
     public function videoList($id)
     {
         $channel = Channel::findOrFail($id);
-        $videos  = Video::where('channel_id', $id)->where('viewed', 'false')->get();
+        $videos = Video::where('channel_id', $id)->where('viewed', 'false')->get();
 
         return view('videos.list', compact('videos', 'channel'));
     }
@@ -72,9 +72,9 @@ class VideosController extends Controller
     public function params($word)
     {
         return [
-            'q'          => $word,
-            'type'       => 'video',
-            'part'       => 'id, snippet',
+            'q' => $word,
+            'type' => 'video',
+            'part' => 'id, snippet',
             'maxResults' => 20,
         ];
     }

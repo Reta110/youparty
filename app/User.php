@@ -50,4 +50,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Video::class);
     }
+
+    public function getNickAttribute()
+    {
+        $part = explode(" ", $this->name);
+        return $part[0];
+    }
 }

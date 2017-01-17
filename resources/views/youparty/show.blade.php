@@ -8,6 +8,12 @@
         </iframe>
     </div>
 
-    <div class="pull-right " style="position:absolute;bottom:5px;right:5px;margin:0;padding:5px 3px;">{{$video->user->name  }}<img src="{{$video->user->avatar}}"></div>
-
+    @if(isset($video->user))
+        <h2 class="pull-right bottom " style=" position: absolute;bottom: 0; right: 120px;">
+            {{$video->user->nick }}
+        </h2>
+        <div style="position:absolute;bottom:5px;right:5px;margin:0;padding:5px 3px;">
+            <img  class='img-rounded' src="{{$video->user->avatar}}">
+        </div>
+    @endif
 @endsection
