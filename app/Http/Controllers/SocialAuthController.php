@@ -29,6 +29,6 @@ class SocialAuthController extends Controller
         $user = $service->createOrGetUser($user);
         auth()->login($user);
 
-        return redirect()->to('/channels');
+        return redirect()->intended('/channels');
     }
 }

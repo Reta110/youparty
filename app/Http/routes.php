@@ -11,9 +11,9 @@ Route::get('/callback', 'SocialAuthController@callback');
 
 
 //Channels
-Route::get('/channels', [ 'uses' => 'ChannelsController@index', 'middleware' => 'auth'])->name('channels');
+Route::get('/channels', [ 'uses' => 'ChannelsController@index'])->name('channels');
 
-Route::group([ 'prefix' => '/channel' ], function () {
+Route::group([ 'prefix' => '/channel' , 'middleware' => 'auth'], function () {
 
     //Show
     Route::get('/{id}', [ 'uses' => 'ChannelsController@show' ])->name('channel.show');
