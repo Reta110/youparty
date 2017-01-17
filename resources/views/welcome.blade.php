@@ -5,22 +5,28 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <h1>Bienvenido</h1>
+                <p class="bg-primary" style="padding: 15px; color:white">Youparty, la rockola digital. Tus invitados podrán crear una lista de reproducción de forma sencilla y personalizada con música de su preferencia, sin importar su SO y sin instalar app. </p>
                 <a href="channels">
                     <img src="{{url('images/youparty.jpg')}}" class="img-responsive">
                 </a>
 
                 <div class="alert alert-info">
+                    <h2>Instrucciones</h2>
                     <h4>Para invitados</h4>
                     <ol>
-                        <li>Busca el canal y entra para comenzar a agregar videos</li>
+                        <li>Es muy fácil, solo debes de ir a la seeción de
+                            <a href="{{ route('channels') }}">canales</a>
+                            , selecciona el de tu preferencia y listo. Ya puedes agregar videos al canal.
+                        </li>
                     </ol>
 
-                    <h4>Para crear tu propio canal</h4>
+                    <h4>Para crear tu propio canal:</h4>
+
                     <ol>
-                        <li>Debes <a href="{{url('/register')}}">registrarte</a></li>
-                        <li>Crear el canal</li>
-                        <li>Visualiza tu canal en una pantalla donde todos vean</li>
-                        <li>Indica a tus amigos el nombre de tu canal para que puedan agregar los videos</li>
+                        <li>Debes de estar  <a href="{{url('/register')}}">registrado</a></li>
+                        <li>Luego vas al admin y creas tu nuevo canal.</li>
+                        <li>Recuerda colocar a visualiza tu canal en una pantalla donde todos tus usuarios puedan ver.</li>
+                        <li>Indica a tus usuarios el nombre de tu canal, para que puedan agregar los videos de su preferencia.</li>
                     </ol>
                 </div>
             </div>

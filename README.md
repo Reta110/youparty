@@ -1,5 +1,7 @@
 # Youparty
 
+Youparty, the digital rock. Your guests will be able to create a playlist in a simple and personalized way in your "channel" with music of their choice, regardless of their OS and without installing any app.
+
 The idea is create a channel when everybody can add videos and enjoy it together.
 
 ## Users
