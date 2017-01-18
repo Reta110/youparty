@@ -85,6 +85,6 @@ class ChannelsController extends Controller
 
         Channel::destroy($channel->id);
 
-        return redirect()->route('admin.index')->with('success', 'El canal ha sido eliminado.');
+        return view('channels.index')->with('success', 'El canal ha sido eliminado.');
     }
 }

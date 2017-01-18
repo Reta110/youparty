@@ -86,9 +86,11 @@
 <footer class="footer">
     <div class="container">
         <p class="text-muted text-center">
+            Visita el repositorio en
             <a href="https://github.com/Reta110/youparty" target="_blank">
                 Github
             </a>.
+            <br>
             Desarrollado por <a href="http://www.rafaeltorrealba.com.ve" target="_blank">
                 @Reta110
             </a>
