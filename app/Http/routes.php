@@ -55,7 +55,7 @@ Route::group([ 'prefix' => 'admin', 'middleware' => 'auth' ], function () {
         'uses' => 'ChannelsController@create'
     ]);
 
-    Route::post('/channel/delete/{id}', [
+    Route::post('/channel/delete/{channel}', [
         'as'   => 'channel.delete',
         'uses' => 'ChannelsController@destroy'
     ]);

@@ -79,16 +79,11 @@ class ChannelsController extends Controller
         return view('videos.search', compact(['channel', 'videos']));
     }
 
-    public function destroy($id)
+    public function destroy(Channel $channel)
     {
+        $this->authorize('accept', $channel);
 
-        $channel = Channel::findOrfail($id);
-
-        if ($channel->user_id != auth()->user()->id){
-            return error('400');
-        }
-
-        Channel::destroy($id);
+        Channel::destroy($channel->id);
 
         return redirect()->route('admin.index')->with('success', 'El canal ha sido eliminado.');
     }

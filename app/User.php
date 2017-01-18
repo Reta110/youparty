@@ -56,4 +56,9 @@ class User extends Authenticatable
         $part = explode(" ", $this->name);
         return $part[0];
     }
+
+    public function owns(Channel $channel)
+    {
+        return $this->id === $channel->user_id;
+    }
 }
