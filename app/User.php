@@ -57,8 +57,8 @@ class User extends Authenticatable
         return $part[0];
     }
 
-    public function owns(Channel $channel)
+    public function owns($model)
     {
-        return $this->id === $channel->user_id;
+        return $this->id === $model->user_id;
     }
 }

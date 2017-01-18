@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Channel;
 use App\Policies\ChannelPolicy;
+use App\Video;
+use App\Policies\VideoPolicy;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         //'App\Model' => 'App\Policies\ModelPolicy',
         Channel::class => ChannelPolicy::class,
+        Video::class => VideoPolicy::class,
     ];
 
 

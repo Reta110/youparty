@@ -36,6 +36,11 @@ Route::group([ 'prefix' => '/channel' , 'middleware' => 'auth'], function () {
         'uses' => 'VideosController@saveVideo'
     ]);
 
+    Route::post('/video/delete/{video}', [
+        'as'   => 'videos.delete',
+        'uses' => 'VideosController@destroy'
+    ]);
+
     //Youparty
     Route::get('/{id}/show/', [
         'as'   => 'youparty.show',

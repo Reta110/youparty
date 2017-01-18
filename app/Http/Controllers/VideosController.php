@@ -77,4 +77,15 @@ class VideosController extends Controller
             'maxResults' => 20,
         ];
     }
+
+    public function destroy(Video $video)
+    {
+        $this->authorize('video', $video);
+
+        $channel = $video->channel->id;
+
+        Video::destroy($video->id);
+
+        return redirect()->to("channel/$channel")->with('success', 'El video ha sido eliminado.');
+    }
 }
