@@ -14,4 +14,9 @@ class VideoPolicy
     {
         return $user->owns($video);
     }
+
+    public function isOwnerOfVideoChannel(User $user, Video $video)
+    {
+        return $user->id === $video->channel->user_id;
+    }
 }

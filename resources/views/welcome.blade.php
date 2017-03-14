@@ -26,7 +26,7 @@
                         <li>Debes de estar  <a href="{{url('/register')}}">registrado</a></li>
                         <li>Luego vas al admin y creas tu nuevo canal.</li>
                         <li>Recuerda colocar a visualiza tu canal en una pantalla donde todos tus usuarios puedan ver.</li>
-                        <li>Indica a tus usuarios el nombre de tu canal, para que puedan agregar los videos de su preferencia.</li>
+                        <li>Indica a tus usuarios el nombre de tu canal para que lo busquen y puedan agregar los videos de su preferencia.</li>
                     </ol>
                 </div>
             </div>

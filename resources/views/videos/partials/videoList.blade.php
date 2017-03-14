@@ -9,7 +9,7 @@
                 <img src="{{$video->thumbnail}}" class="center-block image-responsive">
                 <div class="caption">
                     <h3 class="text-center">{{$video->title}}</h3>
-                    @can('video', $video)
+                    @if( Gate::check('video', $video) || Gate::check('accept', $channel) )
                         {!! Form::open(['route' => ['videos.delete', $video], 'method' => 'POST', 'class' => 'form-inline']) !!}
 
                         <p class="text-center">
@@ -20,7 +20,7 @@
                         </p>
 
                         {!! Form::close() !!}
-                    @endcan
+                    @endif
                 </div>
             </div>
         </div>

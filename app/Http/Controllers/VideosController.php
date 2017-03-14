@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use App\Channel;
 use App\Video;
 use Illuminate\Http\Request;
@@ -80,7 +81,10 @@ class VideosController extends Controller
 
     public function destroy(Video $video)
     {
-        $this->authorize('video', $video);
+        if( Gate::check('video', $video) && Gate::check('isOwnerOfVideoChannel', $video) )
+        {
+            abort(403);
+        }
 
         $channel = $video->channel->id;
 

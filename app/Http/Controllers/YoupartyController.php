@@ -17,9 +17,10 @@ class YoupartyController extends Controller
      */
     public function index($id)
     {
+        $user = auth()->user();
         $channel = Channel::findOrFail($id);
 
-        $this->authorize('youparty', [$channel]);
+        $this->authorize('accept', $channel);
 
         $youtube = new Youtube(config('youtube'));
 
@@ -79,6 +80,7 @@ class YoupartyController extends Controller
      */
     private function getFirstNoRepeatedVideo($id)
     {
+        $video = null;
         //First viewed video
         $videoViewed = Video::where('channel_id', $id)->Where('viewed', 1)->orderBy('id', 'DES')->first();
 
