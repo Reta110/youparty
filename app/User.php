@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -26,4 +26,36 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function channels()
+    {
+        return $this->hasMany(Channel::class);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
+
+    public function getNickAttribute()
+    {
+        $part = explode(" ", $this->name);
+        return $part[0];
+    }
+
+    public function owns($model)
+    {
+        return $this->id === intval($model->user_id);
+    }
 }

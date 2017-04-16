@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use composerIlluminate\Http\Request;
 use App\Channel;
 
-class HomeController extends Controller
+class WebController extends Controller
 {
 
     /**
@@ -16,6 +16,11 @@ class HomeController extends Controller
     public function index()
     {
         $channels = Channel::orderBy("id", "DES")->paginate();
-        return view('welcome', compact('channels'));
+        return view('web.home', compact('channels'));
+    }
+
+    public function instructions()
+    {
+        return view('web.instructions');
     }
 }

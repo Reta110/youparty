@@ -99,6 +99,10 @@
             Desarrollado por <a href="http://www.rafaeltorrealba.com.ve" target="_blank">
                 @Reta110
             </a>
+            <br>
+            <a href="/instructions">
+                Instrucciones
+            </a>
         </p>
     </div>
 </footer>

@@ -12,7 +12,8 @@
 */
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'WebController@index');
+Route::get('/instructions', 'WebController@instructions');
 
 Auth::routes();
 

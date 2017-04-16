@@ -8,24 +8,35 @@
 
                     <div class="panel-heading">
                         @include('partials.success')
-
-                        <div class="col-md-10">
-                            <h3>Canal: {{ $channel->name }}</h3>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>Canal: {{ $channel->name }}</h3>
+                            </div>
+                            <div class="col-md-2 pull-right">
+                                <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive">
+                            </div>
                         </div>
-                        <div class="col-md-2 pull-right">
-                            <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {!! Form::open(['route' => ['search.word',$channel], 'method' => 'GET', 'class' => 'form form-inline']) !!}
+                                <div class="form-group">
+
+                                    <input type="text" name="word" value="{{ old('word')}}" class='form-control'>
+
+                                    <button type="submit" class="btn btn-default">Buscar video</button>
+
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
+
+                            <div class="col-md-3 col-md-pull-2 pull-right">
+                                @can('isOwnerOfChannel', $channel)
+
+                                    <a href="{{route("youparty.show", $channel)}}"
+                                       class="btn btn-primary center-block">Colocar a visualizar Canal</a>
+                                @endcan
+                            </div>
                         </div>
-
-                        {!! Form::open(['route' => ['search.word',$channel], 'method' => 'GET', 'class' => 'form form-inline']) !!}
-                        <div class="form-group">
-
-                            <input type="text" name="word" value="{{ old('word')}}" class='form-control'>
-
-                            <button type="submit" class="btn btn-default">Buscar video</button>
-
-                        </div>
-                        {!! Form::close() !!}
-
                     </div>
                     <div class="panel-body">
 

@@ -20,7 +20,7 @@ class YoupartyController extends Controller
         $user = auth()->user();
         $channel = Channel::findOrFail($id);
 
-        //$this->authorize('accept', $channel);
+        $this->authorize('isOwnerOfChannel', $channel);
 
         $youtube = new Youtube(config('youtube'));
 
