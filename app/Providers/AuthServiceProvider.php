@@ -2,51 +2,36 @@
 
 namespace App\Providers;
 
-use App\Channel;
-use App\Policies\ChannelPolicy;
-use App\Video;
-use App\Policies\VideoPolicy;
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
-
     /**
      * The policy mappings for the application.
      *
      * @var array
      */
     protected $policies = [
-        //'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Model' => 'App\Policies\ModelPolicy',
         Channel::class => ChannelPolicy::class,
         Video::class => VideoPolicy::class,
     ];
 
-
     /**
-     * Register any application authentication / authorization services.
-     *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate $gate
+     * Register any authentication / authorization services.
      *
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        $this->registerPolicies($gate);
+        $this->registerPolicies();
 
-       /* $gate->before(function ($user) {
-
-            if ($user->isAdmin()) {
-                return true;
-            }
-        });*/
-
-        $gate->define('youparty', function ($user, Channel $channel) {
+        Gate::define('youparty', function ($user, Channel $channel) {
             return $user->id === $channel->user_id;
         });
 
-        $gate->define('admin', function ($user, Channel $channel) {
+        Gate::define('admin', function ($user, Channel $channel) {
 
             return auth()->user()->isAdmin();
         });

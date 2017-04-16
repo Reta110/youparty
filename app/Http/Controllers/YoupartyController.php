@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use App\Video;
-use Madcoda\Youtube;
+use Madcoda\Youtube\Youtube;
 
 class YoupartyController extends Controller
 {
@@ -20,7 +20,7 @@ class YoupartyController extends Controller
         $user = auth()->user();
         $channel = Channel::findOrFail($id);
 
-        $this->authorize('accept', $channel);
+        //$this->authorize('accept', $channel);
 
         $youtube = new Youtube(config('youtube'));
 

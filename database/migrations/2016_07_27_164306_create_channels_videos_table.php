@@ -18,7 +18,7 @@ class CreateChannelsVideosTable extends Migration
             $table->string('title');
             $table->string('videoId');
             $table->string('thumbnail');
-            $table->boolean('viewed');
+            $table->boolean('viewed')->default(0);
             $table->timestamps();
 
             $table->integer('channel_id')->unsigned();

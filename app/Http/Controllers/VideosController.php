@@ -6,7 +6,7 @@ use Gate;
 use App\Channel;
 use App\Video;
 use Illuminate\Http\Request;
-use Madcoda\Youtube;
+use Madcoda\Youtube\Youtube;
 
 class VideosController extends Controller
 {
@@ -45,6 +45,7 @@ class VideosController extends Controller
         $video->videoId = $request->videoId;
         $video->thumbnail = $request->thumbnail;
         $video->channel_id = $id;
+        $video->viewed = 0;
         $video->user_id = auth()->user()->id;
         $video->save();
 

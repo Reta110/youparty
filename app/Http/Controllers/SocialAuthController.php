@@ -7,20 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\SocialAccountService;
-use Laravel\Socialite\Facades\Socialite;
+use Socialite;
 
 class SocialAuthController extends Controller
 {
     public function redirect()
     {
         return Socialite::driver('facebook')->redirect();
-    }
-
-    public function aaaa()
-    {
-        echo 'aaa';
-        $user = Socialite::driver('facebook')->stateless()->user();
-        dd($user);
     }
 
     public function callback(SocialAccountService $service)
