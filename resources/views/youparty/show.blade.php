@@ -13,7 +13,7 @@
             {{$video->user->nick }}
         </h2>
         <div style="position:absolute;bottom:5px;right:5px;margin:0;padding:5px 3px;">
-            <img  class='img-rounded' src="{{$video->user->avatar}}">
+            <img class='img-rounded' src="{{$video->user->avatar}}">
         </div>
     @endif
 @endsection

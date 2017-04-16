@@ -26,7 +26,7 @@
                     </div>
                     <div class="panel-body">
 
-                            @include('videos.partials.videosListSearch')
+                        @include('videos.partials.videosListSearch')
                     </div>
                 </div>
             </div>

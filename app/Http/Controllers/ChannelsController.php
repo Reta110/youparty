@@ -15,7 +15,7 @@ class ChannelsController extends Controller
      */
     public function index()
     {
-        $channels = Channel::orderBy("id","DES")->paginate();
+        $channels = Channel::orderBy("id", "DES")->paginate();
         return view('channels.index', compact('channels'));
     }
 
@@ -42,7 +42,7 @@ class ChannelsController extends Controller
     {
         $user = auth()->user();
 
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required',
             'image' => 'image|required'
         ]);

@@ -9,7 +9,7 @@ class Video extends Model
 
     protected $table = 'channel_videos';
 
-    protected $fillable = ['title', 'viewed', 'videoId', 'thumbnail','user_id'];
+    protected $fillable = ['title', 'viewed', 'videoId', 'thumbnail', 'user_id'];
 
 
     /**

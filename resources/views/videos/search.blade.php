@@ -10,10 +10,10 @@
                         @include('partials.success')
 
                         <div class="col-md-10">
-                        <h3>Canal: {{ $channel->name }}</h3>
-                            </div>
+                            <h3>Canal: {{ $channel->name }}</h3>
+                        </div>
                         <div class="col-md-2 pull-right">
-                        <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive">
+                            <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive">
                         </div>
 
                         {!! Form::open(['route' => ['search.word',$channel], 'method' => 'GET', 'class' => 'form form-inline']) !!}
@@ -29,7 +29,7 @@
                     </div>
                     <div class="panel-body">
 
-                            @include('videos.partials.videoList')
+                        @include('videos.partials.videoList')
 
                     </div>
                 </div>

@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-           
+
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/ ') }}">
                 Youparty
@@ -68,14 +68,16 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('/admin') }}"><i class="fa fa-btn fa fa-cogs"></i>Admin</a></li>
                             <li><a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                                   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                    Logout
+                                </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
                         </ul>
                     </li>
                 @endif

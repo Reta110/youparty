@@ -8,7 +8,8 @@
                     <h1>Elige un canal</h1>
                 @else
                     <h1>Uupss..</h1>
-                    <p class="alert-danger">En estos momentos no existe ningun canal. Si deseas crear uno dirigete al <a href="{{ url('/admin') }}"><i class="fa fa-btn fa fa-cogs"></i>Admin</a></p>
+                    <p class="alert-danger">En estos momentos no existe ningun canal. Si deseas crear uno dirigete al <a
+                                href="{{ url('/admin') }}"><i class="fa fa-btn fa fa-cogs"></i>Admin</a></p>
                 @endif
 
                 <div class="panel panel-default panel-info">

@@ -20,6 +20,7 @@ class SocialAuthController extends Controller
     {
         $user = Socialite::driver('facebook')->stateless()->user();
         $user = $service->createOrGetUser($user);
+
         auth()->login($user);
 
         return redirect()->intended('/channels');

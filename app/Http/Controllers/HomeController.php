@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $channels = Channel::orderBy("id","DES")->paginate();
+        $channels = Channel::orderBy("id", "DES")->paginate();
         return view('welcome', compact('channels'));
     }
 }

@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container"> 
+    <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <h1>Bienvenido</h1>
-                <p class="bg-primary" style="padding: 15px; color:white">Youparty, la rockola digital. Tus invitados podrán crear una lista de reproducción de forma sencilla y personalizada con música de su preferencia, sin importar su SO y sin instalar app. </p>
+                <p class="bg-primary" style="padding: 15px; color:white">Youparty, la rockola digital. Tus invitados
+                    podrán crear una lista de reproducción de forma sencilla y personalizada con música de su
+                    preferencia, sin importar su SO y sin instalar app. </p>
                 <a href="channels">
                     <img src="{{url('images/youparty.jpg')}}" class="img-responsive">
                 </a>
@@ -23,10 +25,13 @@
                     <h4>Para crear tu propio canal:</h4>
 
                     <ol>
-                        <li>Debes de estar  <a href="{{url('/register')}}">registrado</a></li>
+                        <li>Debes de estar <a href="{{url('/register')}}">registrado</a></li>
                         <li>Luego vas al admin y creas tu nuevo canal.</li>
-                        <li>Recuerda colocar a visualiza tu canal en una pantalla donde todos tus usuarios puedan ver.</li>
-                        <li>Indica a tus usuarios el nombre de tu canal para que lo busquen y puedan agregar los videos de su preferencia.</li>
+                        <li>Recuerda colocar a visualiza tu canal en una pantalla donde todos tus usuarios puedan ver.
+                        </li>
+                        <li>Indica a tus usuarios el nombre de tu canal para que lo busquen y puedan agregar los videos
+                            de su preferencia.
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -41,7 +46,8 @@
                     <h1>Elige un canal</h1>
                 @else
                     <h1>Uupss..</h1>
-                    <p class="alert-danger">En estos momentos no existe ningun canal. Si deseas crear uno dirigete al <a href="{{ url('/admin') }}"><i class="fa fa-btn fa fa-cogs"></i>Admin</a></p>
+                    <p class="alert-danger">En estos momentos no existe ningun canal. Si deseas crear uno dirigete al <a
+                                href="{{ url('/admin') }}"><i class="fa fa-btn fa fa-cogs"></i>Admin</a></p>
                 @endif
 
                 <div class="panel panel-default panel-info">
