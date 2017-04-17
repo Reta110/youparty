@@ -82,9 +82,7 @@ class VideosController extends Controller
 
     public function destroy(Video $video)
     {
-        if (Gate::check('video', $video) && Gate::check('isOwnerOfVideoChannel', $video)) {
-            abort(403);
-        }
+        $this->authorize('owner', $video);
 
         $channel = $video->channel->id;
 

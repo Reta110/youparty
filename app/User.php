@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function owns($model)
     {
-        return $this->id === intval($model->user_id);
+        return $this->id == $model->user_id;
     }
 }

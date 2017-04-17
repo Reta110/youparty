@@ -12,11 +12,11 @@ class VideoPolicy
 
     public function video(User $user, Video $video)
     {
-        return $user->owns($video);
+        return true;
     }
 
-    public function isOwnerOfVideoChannel(User $user, Video $video)
+    /*public function isOwnerOfVideoChannel(User $user, Video $video)
     {
         return $user->id === $video->channel->user_id;
-    }
+    }*/
 }

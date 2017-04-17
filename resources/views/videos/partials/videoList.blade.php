@@ -9,7 +9,7 @@
                 <img src="{{$video->thumbnail}}" class="center-block image-responsive">
                 <div class="caption">
                     <h3 class="text-center">{{$video->title}}</h3>
-                    @if( Gate::check('video', $video) || Gate::check('accept', $channel) )
+                    @if( Gate::check('owner', $video))
                         {!! Form::open(['route' => ['videos.delete', $video], 'method' => 'POST', 'class' => 'form-inline']) !!}
 
                         <p class="text-center">

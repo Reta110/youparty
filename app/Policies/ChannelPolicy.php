@@ -14,4 +14,6 @@ class ChannelPolicy
     {
         return $user->owns($channel);
     }
+
+
 }

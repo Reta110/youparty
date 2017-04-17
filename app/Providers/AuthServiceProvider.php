@@ -27,13 +27,31 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-       Gate::define('isOwnerOfChannel', function ($user, $channel) {
+        Gate::define('isOwnerOfChannel', function ($user, $channel) {
             return $user->id == $channel->user_id;
         });
 
-        Gate::define('admin', function () {
-
-            return auth()->user()->isAdmin();
+        Gate::define('video', function ($user, $video) {
+            return $user->owns($video);
         });
+
+        Gate::define('isOwnerOfVideoChannel', function ($user, $video) {
+            return $user->id === $video->channel->user_id;
+        });
+
+        Gate::define('owner', function ($user, $video) {
+            if ($user->owns($video)) {
+                return true;
+            }
+
+            if ($user->id === $video->channel->user_id){
+                return true;
+            }
+
+            if ($user->isAdmin()) {
+                return true;
+            }
+        });
+
     }
 }
