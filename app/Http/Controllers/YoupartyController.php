@@ -81,16 +81,15 @@ class YoupartyController extends Controller
     private function getFirstNoRepeatedVideo($id)
     {
         $video = null;
-        //First viewed video
+        //Last viewed video
         $videoViewed = Video::where('channel_id', $id)->Where('viewed', 1)->orderBy('id', 'DES')->first();
 
         // Get the first without repeat the user_id of the last viewed
-        if ($videoViewed != null) {
+        if (count($videoViewed) > 0) {
             $video = Video::where('channel_id', $id)->Where('viewed', 0)->Where('user_id', '<>', $videoViewed->user_id)->first();
         }
-
-        //Else get the the next one.
-        if ($video == null) {
+             //Else get the the next one.
+        else {
             $video = Video::where('channel_id', $id)->Where('viewed', 0)->first();
         }
 

@@ -9,10 +9,10 @@
                     <div class="panel-heading">
                         @include('partials.success')
                         <div class="row">
-                            <div class="col-md-8">
-                                <h3>Canal: {{ $channel->name }}</h3>
+                            <div class="col-md-8 col-sm-6 col-xs-6">
+                                <h3>{{ $channel->name }}</h3>
                             </div>
-                            <div class="col-md-2 pull-right">
+                            <div class="col-md-2 pull-right col-sm-6 col-xs-6">
                                 <img src="{{url('images/channels/'.$channel->id.'.jpg')}}" class="img-responsive">
                             </div>
                         </div>
@@ -21,11 +21,12 @@
                                 {!! Form::open(['route' => ['search.word',$channel], 'method' => 'GET', 'class' => 'form form-inline']) !!}
                                 <div class="form-group">
 
-                                    <input type="text" name="word" value="{{ old('word')}}" class='form-control'>
+                                    <input type="text" name="word" value="{{ old('word')}}" class='form-control' required="true">
 
-                                    <button type="submit" class="btn btn-default">Buscar video</button>
+
 
                                 </div>
+                                <button type="submit" class="btn btn-default">Buscar video</button>
                             </div>
                             {!! Form::close() !!}
 

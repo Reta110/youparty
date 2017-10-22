@@ -1,10 +1,11 @@
 @if(isset($videos))
     @foreach($videos as $video)
+        @if(isset($video->id->videoId))
         <div class="col-sm-6 col-md-4" style="min-height: 55vh">
             <div class="thumbnail">
                 <img src="{{$video->snippet->thumbnails->medium->url}}" class="center-block image-responsive">
                 <div class="caption">
-                    <h3 class="text-center">{{$video->snippet->title}}</h3>
+                    <h3 class="text-center">{{str_limit($video->snippet->title, 60)}}</h3>
 
                     {!! Form::open(['route' => ['save.video',$channel], 'method' => 'POST', 'class' => 'form-inline']) !!}
                     <div class="form-group">
@@ -23,5 +24,6 @@
                 </div>
             </div>
         </div>
+        @endif
     @endforeach
 @endif
