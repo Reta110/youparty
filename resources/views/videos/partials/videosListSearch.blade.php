@@ -1,6 +1,7 @@
 @if(isset($videos))
+    @if(is_array($videos))
     @foreach($videos as $video)
-        @if(isset($video->id->videoId))
+        @if(isset($video->id->videoId) && isset($video->snippet->title) && isset($video->snippet->thumbnails->medium->url) )
         <div class="col-sm-6 col-md-4" style="min-height: 55vh">
             <div class="thumbnail">
                 <img src="{{$video->snippet->thumbnails->medium->url}}" class="center-block image-responsive">
@@ -26,4 +27,7 @@
         </div>
         @endif
     @endforeach
+    @else
+        <p class="alert bg-danger">No se encontraron videos.</p>
+    @endif
 @endif

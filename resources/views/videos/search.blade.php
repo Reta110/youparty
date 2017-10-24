@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+    <link href="http://lastfm-autocomplete.amuzi.me/lastfm-autocomplete.css" rel="stylesheet">
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -21,8 +25,8 @@
                                 {!! Form::open(['route' => ['search.word',$channel], 'method' => 'GET', 'class' => 'form form-inline']) !!}
                                 <div class="form-group">
 
-                                    <input type="text" name="word" value="{{ old('word')}}" class='form-control' required="true">
-
+                                    <input type="text" name="word" value="{{ old('word')}}" class='form-control'
+                                           required="true" id="search">
 
 
                                 </div>
@@ -48,4 +52,44 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous">
+
+    </script>
+    <script src="http://lastfm-autocomplete.amuzi.me/lastfm-autocomplete.js"></script>
+
+    <script type="text/javascript">
+        (function ($) {
+            'use strict';
+
+            function handleAutocompleteChoice(e, ui) {
+                var d = ui.item;
+
+                if (null !== d) {
+                    $('#value').html(d.value);
+                    $('#category').html(d.category);
+                    $('#artist').html(d.artist);
+                    $('#musicTitle').html(d.musicTitle);
+                    $('#label').html('<pre>' + d.label + '</pre>');
+                    $('#data').html(d.data);
+                    $('#lastfm').html(JSON.stringify(d.lastfm));
+                }
+            }
+
+            $(document).ready(function () {
+                var acOptions = {
+                    callback: handleAutocompleteChoice,
+                    modules: ['artist', 'album', 'track'],
+                    apiKey: '0e32d55ef76a52129ad36da460120d44'
+                };
+
+                $('#search').lfmComplete(acOptions);
+            });
+        }(jQuery));
+    </script>
 @endsection
