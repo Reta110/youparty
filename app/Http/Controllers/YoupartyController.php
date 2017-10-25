@@ -17,7 +17,6 @@ class YoupartyController extends Controller
      */
     public function index($id)
     {
-        $user = auth()->user();
         $channel = Channel::findOrFail($id);
 
         $this->authorize('isOwnerOfChannel', $channel);
@@ -89,7 +88,7 @@ class YoupartyController extends Controller
             $video = Video::where('channel_id', $id)->Where('viewed', 0)->Where('user_id', '<>', $videoViewed->user_id)->first();
         }
              //Else get the the next one.
-        else {
+        if ($video == null) {
             $video = Video::where('channel_id', $id)->Where('viewed', 0)->first();
         }
 

@@ -84,7 +84,7 @@
             $(document).ready(function () {
                 var acOptions = {
                     callback: handleAutocompleteChoice,
-                    modules: ['artist', 'album', 'track'],
+                    modules: ['artist', 'track'],
                     apiKey: '0e32d55ef76a52129ad36da460120d44'
                 };
 
